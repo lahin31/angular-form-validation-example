@@ -13,9 +13,9 @@
       </small>
     </div>
     <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price">Price</label> // Price should be 4 digits or more
         <input type="text"
-               class="form-control highlight"
+               class="form-control"
                name="price"
                #priceRef="ngModel"
                pattern="[0-9]{4,}$"
@@ -28,7 +28,7 @@
         </small>
       </div>
       <div class="form-group">
-        <label for="description">Description:</label>
+        <label for="description">Description:</label>  // Description won't cross more than 150 charecters and will work for english alphabet. It will be real time updated.
         <textarea name="description" 
                   id="description" 
                   class="form-control"
