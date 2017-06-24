@@ -1,0 +1,43 @@
+<div class="container">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" 
+             name="name" 
+             class="form-control" 
+             #name="ngModel" 
+             ngModel 
+             required>
+      <small [hidden]="name.valid || name.pristine">
+        Enter a name
+      </small>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text"
+               class="form-control highlight"
+               name="price"
+               #priceRef="ngModel"
+               pattern="[0-9]{4,}$"
+               ngModel
+               required>
+        <small *ngIf="priceRef.errors && (priceRef.dirty || priceRef.touched || priceRef.pristine)">
+            <small [hidden]="!priceRef.errors.pattern">
+              *atleast 4 digits amount
+            </small>
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea name="description" 
+                  id="description" 
+                  class="form-control"
+                  (keydown)="onKey($event)"
+                  maxlength="150"
+                  ngModel
+                  required></textarea>
+        <p class="pull-right">{{ desCount }}</p>
+      </div>
+    <button [disabled]="!userForm.form.valid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
